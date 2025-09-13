@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration Form</title>
+        <link rel="stylesheet" href="styles.css">
+        <script>
+            function validateForm() {
+                let firstName = document.getElementById("first-name").value;
+                let lastName = document.getElementById("last-name").value;
+                let email = document.getElementById("email").value;
+                let mobile = document.getElementById("mobile").value;
+                let password = document.getElementById("password").value;
+                let confirmPassword = document.getElementById("confirm-password").value;
+                if (firstName === "" || lastName === "" || email === "" || mobile === "" || password === "" || confirmPassword === "") {
+                    alert("Please fill in all required fields.");
+                    return false;
+                }
+                 if (!/^[a-zA-Z]+$/.test(firstName)) {
+                    alert("First name must contain only alphabets.");
+                    return false;
+                }
+                if (firstName.length > 6) {
+                    alert("First name cannot exceed 6 characters.");
+                    return false;
+                }
+                if (password.length < 6) {
+                    alert("Password should not be less than 6 characters.");
+                    return false;
+                }
+                if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)) {
+                    alert("Please enter a valid email address (name@domain.com).");
+                    return false;
+                }
+                if (!/^\d{10}$/.test(mobile)) {
+                    alert("Mobile number must have exactly 10 digits.");
+                    return false;
+                }
+                 if (lastName === "") {
+                    alert("Last name must not be empty.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </head>
+<body align="center" bgcolor="lightblue" font-family="Arial, sans-serif" font-size="16px" font-weight="normal" font-align="justify">
+    <div class="container">
+        <h2>Registration Form</h2>
+            <form action="/Registration" method="POST" font-align="justify" onsubmit="return validateForm()"><br><br>
+                <label for="first-name">First name:</label>
+                <input type="text" id="first-name" name="first-name" required><br><br><br>
+                <label for="last-name">Last name:</label>
+                <input type="text" id="last-name" name="last-name" required><br><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br><br>
+                <label for="mobile">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile" required><br><br><br>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required><br><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br><br>
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required><br><br><br>
+                Stream:
+                <select id="stream" name="stream">
+                    <option value="computer science">Computer Science</option>
+                    <option value="information technology">Information Technology</option>
+                    <option value="electronics and communication">Electronics and Communication</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="civil">Civil</option>
+                </select><br><br><br>
+                <input type="submit" value="Register">
+            </form>
+</body>
+</html>
